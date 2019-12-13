@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b1bf026949904420895d895c2dc4c34b" Name="Diagram1">
+        <EntityTypeShape EntityType="RentalShopModel.Cassete_Copies" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentalShopModel.Cassete_Rentals" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentalShopModel.Cassetes" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentalShopModel.Clients" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentalShopModel.Departaments" Width="1.5" PointX="5.25" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentalShopModel.Film_Groups" Width="1.5" PointX="3" PointY="16.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentalShopModel.Generes" Width="1.5" PointX="1.5" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentalShopModel.Staff" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentalShopModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RentalShopModel.Users" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="RentalShopModel.FK_Cassete_Copies_Cassetes" ManuallyRouted="false" />
+        <AssociationConnector Association="RentalShopModel.FK_Cassete_Rentals_Clients" ManuallyRouted="false" />
+        <AssociationConnector Association="RentalShopModel.FK_Cassete_Rentals_Departaments" ManuallyRouted="false" />
+        <AssociationConnector Association="RentalShopModel.FK_Cassetes_Generes1" ManuallyRouted="false" />
+        <AssociationConnector Association="RentalShopModel.FK_Clients_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="RentalShopModel.FK_Departaments_Staff" ManuallyRouted="false" />
+        <AssociationConnector Association="RentalShopModel.FK_Staff_Departaments" ManuallyRouted="false" />
+        <AssociationConnector Association="RentalShopModel.FK_Staff_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="RentalShopModel.Group_Compositions" ManuallyRouted="false" />
+        <AssociationConnector Association="RentalShopModel.Order_States" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

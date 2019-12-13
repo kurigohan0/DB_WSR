@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище RentalShopModelContainer" CdmEntityContainer="RentalShopEntities">
+    <EntitySetMapping Name="Cassete_Copies">
+      <EntityTypeMapping TypeName="RentalShopModel.Cassete_Copies">
+        <MappingFragment StoreEntitySet="Cassete_Copies">
+          <ScalarProperty Name="Copy_Id" ColumnName="Copy_Id" />
+          <ScalarProperty Name="Catalog_Id" ColumnName="Catalog_Id" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cassete_Rentals">
+      <EntityTypeMapping TypeName="RentalShopModel.Cassete_Rentals">
+        <MappingFragment StoreEntitySet="Cassete_Rentals">
+          <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
+          <ScalarProperty Name="Copy_Id" ColumnName="Copy_Id" />
+          <ScalarProperty Name="Give_Date" ColumnName="Give_Date" />
+          <ScalarProperty Name="Get_Date" ColumnName="Get_Date" />
+          <ScalarProperty Name="Client_Id" ColumnName="Client_Id" />
+          <ScalarProperty Name="Departament_Id" ColumnName="Departament_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cassetes">
+      <EntityTypeMapping TypeName="RentalShopModel.Cassetes">
+        <MappingFragment StoreEntitySet="Cassetes">
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Catalog_Id" ColumnName="Catalog_Id" />
+          <ScalarProperty Name="Cover" ColumnName="Cover" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Director" ColumnName="Director" />
+          <ScalarProperty Name="Genere_Id" ColumnName="Genere_Id" />
+          <ScalarProperty Name="Departament_Id" ColumnName="Departament_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="RentalShopModel.Clients">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="Client_Id" ColumnName="Client_Id" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Second_Name" ColumnName="Second_Name" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+          <ScalarProperty Name="Registration_Date" ColumnName="Registration_Date" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departaments">
+      <EntityTypeMapping TypeName="RentalShopModel.Departaments">
+        <MappingFragment StoreEntitySet="Departaments">
+          <ScalarProperty Name="Departament_Id" ColumnName="Departament_Id" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Zip" ColumnName="Zip" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="Personnel_id" ColumnName="Personnel_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Film_Groups">
+      <EntityTypeMapping TypeName="RentalShopModel.Film_Groups">
+        <MappingFragment StoreEntitySet="Film_Groups">
+          <ScalarProperty Name="Actor_Id" ColumnName="Actor_Id" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Generes">
+      <EntityTypeMapping TypeName="RentalShopModel.Generes">
+        <MappingFragment StoreEntitySet="Generes">
+          <ScalarProperty Name="Genere_Id" ColumnName="Genere_Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staff">
+      <EntityTypeMapping TypeName="RentalShopModel.Staff">
+        <MappingFragment StoreEntitySet="Staff">
+          <ScalarProperty Name="Personnel_Id" ColumnName="Personnel_Id" />
+          <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+          <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="Departament_Id" ColumnName="Departament_Id" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="RentalShopModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="RentalShopModel.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Group_Compositions" TypeName="RentalShopModel.Group_Compositions" StoreEntitySet="Group_Compositions">
+      <EndProperty Name="Cassetes">
+        <ScalarProperty Name="Catalog_Id" ColumnName="Catalog_Id" />
+      </EndProperty>
+      <EndProperty Name="Film_Groups">
+        <ScalarProperty Name="Actor_Id" ColumnName="Actor_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Order_States" TypeName="RentalShopModel.Order_States" StoreEntitySet="Order_States">
+      <EndProperty Name="Cassete_Copies">
+        <ScalarProperty Name="Copy_Id" ColumnName="Copy_Id" />
+        <ScalarProperty Name="Catalog_Id" ColumnName="Catalog_Id" />
+      </EndProperty>
+      <EndProperty Name="Cassete_Rentals">
+        <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

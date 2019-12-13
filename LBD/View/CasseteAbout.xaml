@@ -1,0 +1,29 @@
+﻿<Window x:Class="LBD.View.CasseteAbout"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LBD.View"
+        xmlns:ViewModels="clr-namespace:LBD.ViewModel"
+
+        mc:Ignorable="d"
+        Title="Информация о кассете" Height="314" Width="430.4">
+    
+    <Grid>
+        <Image HorizontalAlignment="Left" Height="173" Margin="10,10,0,0" VerticalAlignment="Top" Width="177" Source="{Binding Path=Cover}"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="192,42,0,0" TextWrapping="Wrap" Text="{Binding Path=Title}" VerticalAlignment="Top" Width="222" />
+        <Label Content="Название:" HorizontalAlignment="Left" Margin="192,11,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="192,101,0,0" VerticalAlignment="Top" Text="{Binding Path=Director}" Width="222"/>
+        <Label Content="Режиссер:" HorizontalAlignment="Left" Margin="192,70,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox IsEditable="True" HorizontalAlignment="Left" Height="23" Margin="192,160,0,0" VerticalAlignment="Top" Width="222" ItemsSource="{Binding Path=Genre}"/>
+        <Label Content="Жанр:" HorizontalAlignment="Left" Margin="192,129,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="10,219,0,0" TextWrapping="Wrap" Text="{Binding Path=Price}" VerticalAlignment="Top" Width="85"/>
+        <Label Content="Цена:" HorizontalAlignment="Left" Margin="10,188,0,0" VerticalAlignment="Top" Width="85"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="102,219,0,0" TextWrapping="Wrap" Text="{Binding Path=Departament}" VerticalAlignment="Top" Width="85"/>
+        <Label Content="Отдел:" HorizontalAlignment="Left" Margin="102,188,0,0" VerticalAlignment="Top" Width="85"/>
+        <Button Content="Сохранить" HorizontalAlignment="Left" Margin="192,191,0,0" VerticalAlignment="Top" Width="222" Height="23" Command="{Binding SaveCommand}"/>
+        <Button Content="Отмена" HorizontalAlignment="Left" Margin="192,219,0,0" VerticalAlignment="Top" Width="222" Height="23" Command="{Binding CancelCommand}"/>
+        <Label HorizontalAlignment="Left" Margin="10,247,0,0" VerticalAlignment="Top" x:Name="Catalog_Id" Content="{Binding Path=ContentId}"/>
+
+    </Grid>
+</Window>

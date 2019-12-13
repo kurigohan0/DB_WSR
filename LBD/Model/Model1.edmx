@@ -1,0 +1,770 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище RentalShopModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cassete_Copies">
+          <Key>
+            <PropertyRef Name="Copy_Id" />
+            <PropertyRef Name="Catalog_Id" />
+          </Key>
+          <Property Name="Copy_Id" Type="int" Nullable="false" />
+          <Property Name="Catalog_Id" Type="int" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cassete_Rentals">
+          <Key>
+            <PropertyRef Name="Order_Id" />
+          </Key>
+          <Property Name="Order_Id" Type="int" Nullable="false" />
+          <Property Name="Copy_Id" Type="int" Nullable="false" />
+          <Property Name="Give_Date" Type="date" Nullable="false" />
+          <Property Name="Get_Date" Type="date" Nullable="false" />
+          <Property Name="Client_Id" Type="int" Nullable="false" />
+          <Property Name="Departament_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cassetes">
+          <Key>
+            <PropertyRef Name="Catalog_Id" />
+          </Key>
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="Catalog_Id" Type="int" Nullable="false" />
+          <Property Name="Cover" Type="image" />
+          <Property Name="Price" Type="float" />
+          <Property Name="Director" Type="nvarchar" MaxLength="100" />
+          <Property Name="Genere_Id" Type="int" />
+          <Property Name="Departament_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="Client_Id" />
+          </Key>
+          <Property Name="Client_Id" Type="int" Nullable="false" />
+          <Property Name="First_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Second_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Registration_Date" Type="date" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Departaments">
+          <Key>
+            <PropertyRef Name="Departament_Id" />
+          </Key>
+          <Property Name="Departament_Id" Type="int" Nullable="false" />
+          <Property Name="Phone_Number" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="State" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Zip" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="Street" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Personnel_id" Type="int" />
+        </EntityType>
+        <EntityType Name="Film_Groups">
+          <Key>
+            <PropertyRef Name="Actor_Id" />
+          </Key>
+          <Property Name="Actor_Id" Type="int" Nullable="false" />
+          <Property Name="First_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Last_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Generes">
+          <Key>
+            <PropertyRef Name="Genere_Id" />
+          </Key>
+          <Property Name="Genere_Id" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Group_Compositions">
+          <Key>
+            <PropertyRef Name="Actor_Id" />
+            <PropertyRef Name="Catalog_Id" />
+          </Key>
+          <Property Name="Actor_Id" Type="int" Nullable="false" />
+          <Property Name="Catalog_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Order_States">
+          <Key>
+            <PropertyRef Name="Order_Id" />
+            <PropertyRef Name="Copy_Id" />
+            <PropertyRef Name="Catalog_Id" />
+          </Key>
+          <Property Name="Order_Id" Type="int" Nullable="false" />
+          <Property Name="Copy_Id" Type="int" Nullable="false" />
+          <Property Name="Catalog_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="Personnel_Id" />
+          </Key>
+          <Property Name="Personnel_Id" Type="int" Nullable="false" />
+          <Property Name="First_Name" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Last_Name" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Position" Type="nchar" MaxLength="32" Nullable="false" />
+          <Property Name="Departament_Id" Type="int" />
+          <Property Name="Salary" Type="float" />
+          <Property Name="Login" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Login" />
+          </Key>
+          <Property Name="Login" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Cassete_Copies_Cassetes">
+          <End Role="Cassetes" Type="Self.Cassetes" Multiplicity="1" />
+          <End Role="Cassete_Copies" Type="Self.Cassete_Copies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cassetes">
+              <PropertyRef Name="Catalog_Id" />
+            </Principal>
+            <Dependent Role="Cassete_Copies">
+              <PropertyRef Name="Catalog_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cassete_Rentals_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="Cassete_Rentals" Type="Self.Cassete_Rentals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="Client_Id" />
+            </Principal>
+            <Dependent Role="Cassete_Rentals">
+              <PropertyRef Name="Client_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cassete_Rentals_Departaments">
+          <End Role="Departaments" Type="Self.Departaments" Multiplicity="1" />
+          <End Role="Cassete_Rentals" Type="Self.Cassete_Rentals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departaments">
+              <PropertyRef Name="Departament_Id" />
+            </Principal>
+            <Dependent Role="Cassete_Rentals">
+              <PropertyRef Name="Departament_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cassetes_Generes1">
+          <End Role="Generes" Type="Self.Generes" Multiplicity="0..1" />
+          <End Role="Cassetes" Type="Self.Cassetes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Generes">
+              <PropertyRef Name="Genere_Id" />
+            </Principal>
+            <Dependent Role="Cassetes">
+              <PropertyRef Name="Genere_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clients_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Login" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="Login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Departaments_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Departaments" Type="Self.Departaments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="Personnel_Id" />
+            </Principal>
+            <Dependent Role="Departaments">
+              <PropertyRef Name="Personnel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Group_Compositions_Cassetes">
+          <End Role="Cassetes" Type="Self.Cassetes" Multiplicity="1" />
+          <End Role="Group_Compositions" Type="Self.Group_Compositions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cassetes">
+              <PropertyRef Name="Catalog_Id" />
+            </Principal>
+            <Dependent Role="Group_Compositions">
+              <PropertyRef Name="Catalog_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Group_Compositions_Film_Groups">
+          <End Role="Film_Groups" Type="Self.Film_Groups" Multiplicity="1" />
+          <End Role="Group_Compositions" Type="Self.Group_Compositions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Film_Groups">
+              <PropertyRef Name="Actor_Id" />
+            </Principal>
+            <Dependent Role="Group_Compositions">
+              <PropertyRef Name="Actor_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_States_Cassete_Copies">
+          <End Role="Cassete_Copies" Type="Self.Cassete_Copies" Multiplicity="1" />
+          <End Role="Order_States" Type="Self.Order_States" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cassete_Copies">
+              <PropertyRef Name="Copy_Id" />
+              <PropertyRef Name="Catalog_Id" />
+            </Principal>
+            <Dependent Role="Order_States">
+              <PropertyRef Name="Copy_Id" />
+              <PropertyRef Name="Catalog_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_States_Cassete_Rentals">
+          <End Role="Cassete_Rentals" Type="Self.Cassete_Rentals" Multiplicity="1" />
+          <End Role="Order_States" Type="Self.Order_States" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cassete_Rentals">
+              <PropertyRef Name="Order_Id" />
+            </Principal>
+            <Dependent Role="Order_States">
+              <PropertyRef Name="Order_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Departaments">
+          <End Role="Departaments" Type="Self.Departaments" Multiplicity="0..1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departaments">
+              <PropertyRef Name="Departament_Id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="Departament_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Login" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="Login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище RentalShopModelContainer">
+          <EntitySet Name="Cassete_Copies" EntityType="Self.Cassete_Copies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cassete_Rentals" EntityType="Self.Cassete_Rentals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cassetes" EntityType="Self.Cassetes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departaments" EntityType="Self.Departaments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Film_Groups" EntityType="Self.Film_Groups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Generes" EntityType="Self.Generes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Group_Compositions" EntityType="Self.Group_Compositions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Order_States" EntityType="Self.Order_States" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cassete_Copies_Cassetes" Association="Self.FK_Cassete_Copies_Cassetes">
+            <End Role="Cassetes" EntitySet="Cassetes" />
+            <End Role="Cassete_Copies" EntitySet="Cassete_Copies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cassete_Rentals_Clients" Association="Self.FK_Cassete_Rentals_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Cassete_Rentals" EntitySet="Cassete_Rentals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cassete_Rentals_Departaments" Association="Self.FK_Cassete_Rentals_Departaments">
+            <End Role="Departaments" EntitySet="Departaments" />
+            <End Role="Cassete_Rentals" EntitySet="Cassete_Rentals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cassetes_Generes1" Association="Self.FK_Cassetes_Generes1">
+            <End Role="Generes" EntitySet="Generes" />
+            <End Role="Cassetes" EntitySet="Cassetes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clients_Users" Association="Self.FK_Clients_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Departaments_Staff" Association="Self.FK_Departaments_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Departaments" EntitySet="Departaments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Group_Compositions_Cassetes" Association="Self.FK_Group_Compositions_Cassetes">
+            <End Role="Cassetes" EntitySet="Cassetes" />
+            <End Role="Group_Compositions" EntitySet="Group_Compositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Group_Compositions_Film_Groups" Association="Self.FK_Group_Compositions_Film_Groups">
+            <End Role="Film_Groups" EntitySet="Film_Groups" />
+            <End Role="Group_Compositions" EntitySet="Group_Compositions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_States_Cassete_Copies" Association="Self.FK_Order_States_Cassete_Copies">
+            <End Role="Cassete_Copies" EntitySet="Cassete_Copies" />
+            <End Role="Order_States" EntitySet="Order_States" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_States_Cassete_Rentals" Association="Self.FK_Order_States_Cassete_Rentals">
+            <End Role="Cassete_Rentals" EntitySet="Cassete_Rentals" />
+            <End Role="Order_States" EntitySet="Order_States" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Departaments" Association="Self.FK_Staff_Departaments">
+            <End Role="Departaments" EntitySet="Departaments" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Users" Association="Self.FK_Staff_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RentalShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cassete_Copies">
+          <Key>
+            <PropertyRef Name="Copy_Id" />
+            <PropertyRef Name="Catalog_Id" />
+          </Key>
+          <Property Name="Copy_Id" Type="Int32" Nullable="false" />
+          <Property Name="Catalog_Id" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cassetes" Relationship="Self.FK_Cassete_Copies_Cassetes" FromRole="Cassete_Copies" ToRole="Cassetes" />
+          <NavigationProperty Name="Cassete_Rentals" Relationship="Self.Order_States" FromRole="Cassete_Copies" ToRole="Cassete_Rentals" />
+        </EntityType>
+        <EntityType Name="Cassete_Rentals">
+          <Key>
+            <PropertyRef Name="Order_Id" />
+          </Key>
+          <Property Name="Order_Id" Type="Int32" Nullable="false" />
+          <Property Name="Copy_Id" Type="Int32" Nullable="false" />
+          <Property Name="Give_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Get_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Client_Id" Type="Int32" Nullable="false" />
+          <Property Name="Departament_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_Cassete_Rentals_Clients" FromRole="Cassete_Rentals" ToRole="Clients" />
+          <NavigationProperty Name="Departaments" Relationship="Self.FK_Cassete_Rentals_Departaments" FromRole="Cassete_Rentals" ToRole="Departaments" />
+          <NavigationProperty Name="Cassete_Copies" Relationship="Self.Order_States" FromRole="Cassete_Rentals" ToRole="Cassete_Copies" />
+        </EntityType>
+        <EntityType Name="Cassetes">
+          <Key>
+            <PropertyRef Name="Catalog_Id" />
+          </Key>
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Catalog_Id" Type="Int32" Nullable="false" />
+          <Property Name="Cover" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="Director" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Genere_Id" Type="Int32" />
+          <Property Name="Departament_Id" Type="Int32" />
+          <NavigationProperty Name="Cassete_Copies" Relationship="Self.FK_Cassete_Copies_Cassetes" FromRole="Cassetes" ToRole="Cassete_Copies" />
+          <NavigationProperty Name="Generes" Relationship="Self.FK_Cassetes_Generes1" FromRole="Cassetes" ToRole="Generes" />
+          <NavigationProperty Name="Film_Groups" Relationship="Self.Group_Compositions" FromRole="Cassetes" ToRole="Film_Groups" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="Client_Id" />
+          </Key>
+          <Property Name="Client_Id" Type="Int32" Nullable="false" />
+          <Property Name="First_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Second_Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Registration_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Login" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cassete_Rentals" Relationship="Self.FK_Cassete_Rentals_Clients" FromRole="Clients" ToRole="Cassete_Rentals" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Clients_Users" FromRole="Clients" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Departaments">
+          <Key>
+            <PropertyRef Name="Departament_Id" />
+          </Key>
+          <Property Name="Departament_Id" Type="Int32" Nullable="false" />
+          <Property Name="Phone_Number" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Zip" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Street" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Personnel_id" Type="Int32" />
+          <NavigationProperty Name="Cassete_Rentals" Relationship="Self.FK_Cassete_Rentals_Departaments" FromRole="Departaments" ToRole="Cassete_Rentals" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_Departaments_Staff" FromRole="Departaments" ToRole="Staff" />
+          <NavigationProperty Name="Staff1" Relationship="Self.FK_Staff_Departaments" FromRole="Departaments" ToRole="Staff" />
+        </EntityType>
+        <EntityType Name="Film_Groups">
+          <Key>
+            <PropertyRef Name="Actor_Id" />
+          </Key>
+          <Property Name="Actor_Id" Type="Int32" Nullable="false" />
+          <Property Name="First_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Last_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cassetes" Relationship="Self.Group_Compositions" FromRole="Film_Groups" ToRole="Cassetes" />
+        </EntityType>
+        <EntityType Name="Generes">
+          <Key>
+            <PropertyRef Name="Genere_Id" />
+          </Key>
+          <Property Name="Genere_Id" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cassetes" Relationship="Self.FK_Cassetes_Generes1" FromRole="Generes" ToRole="Cassetes" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="Personnel_Id" />
+          </Key>
+          <Property Name="Personnel_Id" Type="Int32" Nullable="false" />
+          <Property Name="First_Name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Last_Name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Position" Type="String" MaxLength="32" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Departament_Id" Type="Int32" />
+          <Property Name="Salary" Type="Double" />
+          <Property Name="Login" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Departaments" Relationship="Self.FK_Departaments_Staff" FromRole="Staff" ToRole="Departaments" />
+          <NavigationProperty Name="Departaments1" Relationship="Self.FK_Staff_Departaments" FromRole="Staff" ToRole="Departaments" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Staff_Users" FromRole="Staff" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Login" />
+          </Key>
+          <Property Name="Login" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Clients" Relationship="Self.FK_Clients_Users" FromRole="Users" ToRole="Clients" />
+          <NavigationProperty Name="Staff" Relationship="Self.FK_Staff_Users" FromRole="Users" ToRole="Staff" />
+        </EntityType>
+        <Association Name="FK_Cassete_Copies_Cassetes">
+          <End Role="Cassetes" Type="Self.Cassetes" Multiplicity="1" />
+          <End Role="Cassete_Copies" Type="Self.Cassete_Copies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cassetes">
+              <PropertyRef Name="Catalog_Id" />
+            </Principal>
+            <Dependent Role="Cassete_Copies">
+              <PropertyRef Name="Catalog_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cassete_Rentals_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="Cassete_Rentals" Type="Self.Cassete_Rentals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="Client_Id" />
+            </Principal>
+            <Dependent Role="Cassete_Rentals">
+              <PropertyRef Name="Client_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cassete_Rentals_Departaments">
+          <End Role="Departaments" Type="Self.Departaments" Multiplicity="1" />
+          <End Role="Cassete_Rentals" Type="Self.Cassete_Rentals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departaments">
+              <PropertyRef Name="Departament_Id" />
+            </Principal>
+            <Dependent Role="Cassete_Rentals">
+              <PropertyRef Name="Departament_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cassetes_Generes1">
+          <End Role="Generes" Type="Self.Generes" Multiplicity="0..1" />
+          <End Role="Cassetes" Type="Self.Cassetes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Generes">
+              <PropertyRef Name="Genere_Id" />
+            </Principal>
+            <Dependent Role="Cassetes">
+              <PropertyRef Name="Genere_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Clients_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Login" />
+            </Principal>
+            <Dependent Role="Clients">
+              <PropertyRef Name="Login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Departaments_Staff">
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
+          <End Role="Departaments" Type="Self.Departaments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="Personnel_Id" />
+            </Principal>
+            <Dependent Role="Departaments">
+              <PropertyRef Name="Personnel_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Departaments">
+          <End Role="Departaments" Type="Self.Departaments" Multiplicity="0..1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departaments">
+              <PropertyRef Name="Departament_Id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="Departament_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Staff_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Login" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="Login" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Group_Compositions">
+          <End Role="Cassetes" Type="Self.Cassetes" Multiplicity="*" />
+          <End Role="Film_Groups" Type="Self.Film_Groups" Multiplicity="*" />
+        </Association>
+        <Association Name="Order_States">
+          <End Role="Cassete_Copies" Type="Self.Cassete_Copies" Multiplicity="*" />
+          <End Role="Cassete_Rentals" Type="Self.Cassete_Rentals" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="RentalShopEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cassete_Copies" EntityType="Self.Cassete_Copies" />
+          <EntitySet Name="Cassete_Rentals" EntityType="Self.Cassete_Rentals" />
+          <EntitySet Name="Cassetes" EntityType="Self.Cassetes" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" />
+          <EntitySet Name="Departaments" EntityType="Self.Departaments" />
+          <EntitySet Name="Film_Groups" EntityType="Self.Film_Groups" />
+          <EntitySet Name="Generes" EntityType="Self.Generes" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <AssociationSet Name="FK_Cassete_Copies_Cassetes" Association="Self.FK_Cassete_Copies_Cassetes">
+            <End Role="Cassetes" EntitySet="Cassetes" />
+            <End Role="Cassete_Copies" EntitySet="Cassete_Copies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cassete_Rentals_Clients" Association="Self.FK_Cassete_Rentals_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Cassete_Rentals" EntitySet="Cassete_Rentals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cassete_Rentals_Departaments" Association="Self.FK_Cassete_Rentals_Departaments">
+            <End Role="Departaments" EntitySet="Departaments" />
+            <End Role="Cassete_Rentals" EntitySet="Cassete_Rentals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cassetes_Generes1" Association="Self.FK_Cassetes_Generes1">
+            <End Role="Generes" EntitySet="Generes" />
+            <End Role="Cassetes" EntitySet="Cassetes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Clients_Users" Association="Self.FK_Clients_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Clients" EntitySet="Clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Departaments_Staff" Association="Self.FK_Departaments_Staff">
+            <End Role="Staff" EntitySet="Staff" />
+            <End Role="Departaments" EntitySet="Departaments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Departaments" Association="Self.FK_Staff_Departaments">
+            <End Role="Departaments" EntitySet="Departaments" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Staff_Users" Association="Self.FK_Staff_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Staff" EntitySet="Staff" />
+          </AssociationSet>
+          <AssociationSet Name="Group_Compositions" Association="Self.Group_Compositions">
+            <End Role="Cassetes" EntitySet="Cassetes" />
+            <End Role="Film_Groups" EntitySet="Film_Groups" />
+          </AssociationSet>
+          <AssociationSet Name="Order_States" Association="Self.Order_States">
+            <End Role="Cassete_Copies" EntitySet="Cassete_Copies" />
+            <End Role="Cassete_Rentals" EntitySet="Cassete_Rentals" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище RentalShopModelContainer" CdmEntityContainer="RentalShopEntities">
+          <EntitySetMapping Name="Cassete_Copies">
+            <EntityTypeMapping TypeName="RentalShopModel.Cassete_Copies">
+              <MappingFragment StoreEntitySet="Cassete_Copies">
+                <ScalarProperty Name="Copy_Id" ColumnName="Copy_Id" />
+                <ScalarProperty Name="Catalog_Id" ColumnName="Catalog_Id" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cassete_Rentals">
+            <EntityTypeMapping TypeName="RentalShopModel.Cassete_Rentals">
+              <MappingFragment StoreEntitySet="Cassete_Rentals">
+                <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
+                <ScalarProperty Name="Copy_Id" ColumnName="Copy_Id" />
+                <ScalarProperty Name="Give_Date" ColumnName="Give_Date" />
+                <ScalarProperty Name="Get_Date" ColumnName="Get_Date" />
+                <ScalarProperty Name="Client_Id" ColumnName="Client_Id" />
+                <ScalarProperty Name="Departament_Id" ColumnName="Departament_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cassetes">
+            <EntityTypeMapping TypeName="RentalShopModel.Cassetes">
+              <MappingFragment StoreEntitySet="Cassetes">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Catalog_Id" ColumnName="Catalog_Id" />
+                <ScalarProperty Name="Cover" ColumnName="Cover" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Director" ColumnName="Director" />
+                <ScalarProperty Name="Genere_Id" ColumnName="Genere_Id" />
+                <ScalarProperty Name="Departament_Id" ColumnName="Departament_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="RentalShopModel.Clients">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="Client_Id" ColumnName="Client_Id" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Second_Name" ColumnName="Second_Name" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Registration_Date" ColumnName="Registration_Date" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departaments">
+            <EntityTypeMapping TypeName="RentalShopModel.Departaments">
+              <MappingFragment StoreEntitySet="Departaments">
+                <ScalarProperty Name="Departament_Id" ColumnName="Departament_Id" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Zip" ColumnName="Zip" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="Personnel_id" ColumnName="Personnel_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Film_Groups">
+            <EntityTypeMapping TypeName="RentalShopModel.Film_Groups">
+              <MappingFragment StoreEntitySet="Film_Groups">
+                <ScalarProperty Name="Actor_Id" ColumnName="Actor_Id" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Generes">
+            <EntityTypeMapping TypeName="RentalShopModel.Generes">
+              <MappingFragment StoreEntitySet="Generes">
+                <ScalarProperty Name="Genere_Id" ColumnName="Genere_Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staff">
+            <EntityTypeMapping TypeName="RentalShopModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="Personnel_Id" ColumnName="Personnel_Id" />
+                <ScalarProperty Name="First_Name" ColumnName="First_Name" />
+                <ScalarProperty Name="Last_Name" ColumnName="Last_Name" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Departament_Id" ColumnName="Departament_Id" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="RentalShopModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="RentalShopModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Group_Compositions" TypeName="RentalShopModel.Group_Compositions" StoreEntitySet="Group_Compositions">
+            <EndProperty Name="Cassetes">
+              <ScalarProperty Name="Catalog_Id" ColumnName="Catalog_Id" />
+            </EndProperty>
+            <EndProperty Name="Film_Groups">
+              <ScalarProperty Name="Actor_Id" ColumnName="Actor_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Order_States" TypeName="RentalShopModel.Order_States" StoreEntitySet="Order_States">
+            <EndProperty Name="Cassete_Copies">
+              <ScalarProperty Name="Copy_Id" ColumnName="Copy_Id" />
+              <ScalarProperty Name="Catalog_Id" ColumnName="Catalog_Id" />
+            </EndProperty>
+            <EndProperty Name="Cassete_Rentals">
+              <ScalarProperty Name="Order_Id" ColumnName="Order_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
