@@ -80,7 +80,6 @@ namespace LBD.ViewModel
                 OnPropertyChanged("SelectedTitle");
                 OnPropertyChanged("Price");
                 OnPropertyChanged("TotalPrice");
-
             }
         }
 
@@ -97,8 +96,6 @@ namespace LBD.ViewModel
                 {
                     return "";
                 }
-
-
             }
             set
             {
@@ -184,9 +181,7 @@ namespace LBD.ViewModel
                 OnPropertyChanged("Clients");
             }
         }
-
         
-
         private string _findArg;
         public string FindArg
         {
@@ -223,7 +218,6 @@ namespace LBD.ViewModel
             rs = new Model.RentalShopEntities();
             Model.Cassete_Copies copy;
             FreeCassetes.Clear();
-
             foreach (var item in find.FindTitle(FindHandler.FieldType.Title, FindArg))
             {
                 if (rs.Cassete_Copies.Find(1, item.Catalog_Id) != null && rs.Cassete_Copies.Find(1, item.Catalog_Id).Status != "busy")
@@ -241,7 +235,6 @@ namespace LBD.ViewModel
 
                 }
             }
-
         }
         public string OrderId
         {
