@@ -7,7 +7,7 @@
 
         xmlns:local="clr-namespace:LBD.View"
         mc:Ignorable="d"
-        Title="ManagerWindow" Height="450" Width="800">
+        Title="{Binding ManagerName}" Height="450" Width="800">
 
     <Window.DataContext>
         <ViewModels:ManagerWindowViewModel/>

@@ -20,61 +20,19 @@ namespace LBD.ViewModel
     {
         public ManagerWindowViewModel()
         {
-            //GetCassetes();
 
         }
 
-        //private ObservableCollection<CassetesView> _cassetes = new ObservableCollection<CassetesView>();
-        //public ObservableCollection<CassetesView> Cassetes
-        //{
-        //    get
-        //    {
-
-        //        return _cassetes;
-        //    }
-        //    set
-        //    {
-        //        _cassetes = value;
-        //        OnPropertyChanged("Cassetes");
-        //    }
-        //}
-
-        //private void GetCassetes()
-        //{
-        //    Model.RentalShopEntities rs = new Model.RentalShopEntities();
-        //    foreach (var item in rs.Cassetes)
-        //    {
-        //        _cassetes.Add(new CassetesView
-        //        {
-        //            Title = item.Title,
-        //            Price = item.Price,
-        //            Genere_Id = item.Genere_Id,
-        //            Catalog_Id = item.Catalog_Id,
-        //            Departament_Id = item.Departament_Id,
-        //            Director = item.Director
-        //        });
-        //    }            
-        //}
-
-        public static List<CassetesView> GetCassetes()
+        public string ManagerName
         {
-            Model.RentalShopEntities rs = new RentalShopEntities();
-            List<CassetesView> cassetes = new List<CassetesView>();
-            foreach (var item in rs.Cassetes)
+            get
             {
-                cassetes.Add(new CassetesView
-                {
-                    Catalog_Id = item.Catalog_Id,
-                    Departament_Id = item.Departament_Id,
-                    Director = item.Director,
-                    Genere_Id = item.Genere_Id,
-                    Price = item.Price,
-                    Title = item.Title,
-                    Cover = API.Image.ByteArrayToImage(item.Cover)
-
-                });
+                return "Менеджер: " + AuthorizationHandler.UserName + " | (" + AuthorizationHandler.Login + ")";
             }
-            return cassetes;
+            set
+            {
+
+            }
         }
 
 

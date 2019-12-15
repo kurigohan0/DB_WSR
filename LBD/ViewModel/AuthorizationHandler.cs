@@ -9,6 +9,12 @@ namespace LBD.ViewModel
 {
     class AuthorizationHandler
     {
+        public static int CurrentUserID { get; set; }
+        public static string UserName { get; set; }
+        public static string Login { get; set; }
+
+
+
         public Position.EmployeePosition Auth(string login, string pass)
         {
             Model.RentalShopEntities rs = new Model.RentalShopEntities();
@@ -26,6 +32,10 @@ namespace LBD.ViewModel
                             {
                                 if (staff.Position.Replace(" ", "") == "Менеджер")
                                 {
+                                    CurrentUserID = staff.Personnel_Id;
+                                    UserName = staff.First_Name + " " + staff.Last_Name;
+                                    Login = login;
+                                    
                                     return Position.EmployeePosition.Manager;
                                 }
                                 else

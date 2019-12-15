@@ -15,17 +15,34 @@ namespace LBD.ViewModel
 {
     class CreateOrderPageViewModel : INotifyPropertyChanged
     {
-        Page p;
+        private Page p;
         Model.RentalShopEntities rs;
         public CreateOrderPageViewModel(Page page)
         {
             p = page;
 
             Get();
-            //FindCommand = new RelayCommand(() => FindCommandClick("FindButton"));
 
             GetAllClientsNames();
+            FindCommand = new RelayCommand(() => FindCommandClick("FindButton"));
+            CreateOrder = new RelayCommand(() => CrateOrderClick("CreateOrderButton"));
 
+        }
+
+        private void CrateOrderClick(object sender)
+        {
+            rs = new Model.RentalShopEntities();
+            rs.Cassete_Rentals.Add(new Model.Cassete_Rentals
+            {
+                Order_Id = rs.Cassete_Rentals.Count() + 1,
+                Copy_Id = rs.Cassete_Copies.Find(1, SelectedCassete.Id).Copy_Id,
+                Give_Date = SelectedDate,
+                Get_Date = SelectedReturnDate,
+                Client_Id = 1,//fix
+                Departament_Id = rs.Staff.Find(AuthorizationHandler.CurrentUserID).Departament_Id.GetValueOrDefault()
+            });
+            rs.Cassete_Copies.Find(1, SelectedCassete.Id).Status = "busy";
+            rs.SaveChanges();
         }
 
         public async void Get()
@@ -72,7 +89,16 @@ namespace LBD.ViewModel
         {
             get
             {
-                return _selectedTitle + " (id " + SelectedCassete.Id + ")";
+                try
+                {
+                    return _selectedTitle + " (id " + SelectedCassete.Id + ")";
+                }
+                catch
+                {
+                    return "";
+                }
+
+
             }
             set
             {
@@ -99,7 +125,14 @@ namespace LBD.ViewModel
         {
             get
             {
-                return (int.Parse(_price) * (_selectedReturnDate - _selectedDate).TotalDays).ToString();
+                try
+                {
+                    return (int.Parse(_price) * (_selectedReturnDate - _selectedDate).TotalDays).ToString();
+                }
+                catch
+                {
+                    return "";
+                }
             }
             set
             {
@@ -152,6 +185,8 @@ namespace LBD.ViewModel
             }
         }
 
+        
+
         private string _findArg;
         public string FindArg
         {
@@ -180,25 +215,33 @@ namespace LBD.ViewModel
 
         }
         public ICommand FindCommand { get; set; }
+        public ICommand CreateOrder { get; set; }
+
         public async void FindCommandClick(object sender)
         {
-
             FindHandler find = new FindHandler();
+            rs = new Model.RentalShopEntities();
+            Model.Cassete_Copies copy;
             FreeCassetes.Clear();
-            foreach (var item in find.FindTitle(FindHandler.FieldType.Title, SelectedTitle))
-            {
-                p.Dispatcher.Invoke(() =>
-                {
 
-                    FreeCassetes.Add(new CasseteShortInfo
+            foreach (var item in find.FindTitle(FindHandler.FieldType.Title, FindArg))
+            {
+                if (rs.Cassete_Copies.Find(1, item.Catalog_Id) != null && rs.Cassete_Copies.Find(1, item.Catalog_Id).Status != "busy")
+                {
+                    p.Dispatcher.Invoke(() =>
                     {
-                        Copies = 1,//fix
-                        Cover = API.Image.ByteArrayToImage(item.Cover),
-                        Id = item.Catalog_Id,
-                        Name = item.Title
+                        FreeCassetes.Add(new CasseteShortInfo
+                        {
+                            Copies = 1,//fix
+                            Cover = API.Image.ByteArrayToImage(item.Cover),
+                            Id = item.Catalog_Id,
+                            Name = item.Title
+                        });
                     });
-                });
+
+                }
             }
+
         }
         public string OrderId
         {
