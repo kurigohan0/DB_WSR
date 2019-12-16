@@ -48,6 +48,27 @@ namespace LBD.ViewModel
             }
 
         }
+        public bool CanEdit
+        {
+            get
+            {
+                switch (AuthorizationHandler.CurrentPosition)
+                {
+                    case Position.EmployeePosition.Client:
+                        return false;
+                    case Position.EmployeePosition.Common:
+                        return false;
+                    case Position.EmployeePosition.Manager:
+                        return true;
+                    default:
+                        return false;
+                }
+            }
+            set
+            {
+
+            }
+        }
 
         private void ConnectToDB()
         {

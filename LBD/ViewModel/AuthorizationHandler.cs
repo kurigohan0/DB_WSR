@@ -12,6 +12,7 @@ namespace LBD.ViewModel
         public static int CurrentUserID { get; set; }
         public static string UserName { get; set; }
         public static string Login { get; set; }
+        public static Position.EmployeePosition CurrentPosition;
 
 
 
@@ -27,28 +28,35 @@ namespace LBD.ViewModel
                         if(login == staff.Login)
                         {
                             if (staff.Position.Replace(" ", "") == "Работник")
+                            {
+                                CurrentPosition = Position.EmployeePosition.Common;
                                 return Position.EmployeePosition.Common;
+                            }
                             else
                             {
                                 if (staff.Position.Replace(" ", "") == "Менеджер")
                                 {
                                     CurrentUserID = staff.Personnel_Id;
+                                    CurrentPosition = Position.EmployeePosition.Manager;
                                     UserName = staff.First_Name + " " + staff.Last_Name;
                                     Login = login;
-                                    
+
                                     return Position.EmployeePosition.Manager;
                                 }
-                                else
-                                {
-                                    foreach (var user in rs.Clients)
-                                    {
-                                        if (user.Login == login)
-                                            return Position.EmployeePosition.Client;
 
-                                    }
-                                }
                             }                           
                         }
+                    }
+                    foreach (var user in rs.Clients)
+                    {
+                        if (user.Login == login)
+                        {
+                            UserName = user.First_Name + " " + user.Second_Name;
+                            Login = user.Login;
+                            CurrentPosition = Position.EmployeePosition.Client;
+                            return Position.EmployeePosition.Client;
+                        }
+
                     }
                 }
             }

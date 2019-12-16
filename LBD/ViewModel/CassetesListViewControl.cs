@@ -125,8 +125,6 @@ namespace LBD.ViewModel
             }
         }
 
-        
-
         private string _inputtext;
         public string InputText
         {

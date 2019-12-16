@@ -48,6 +48,11 @@ namespace LBD.ViewModel
                 managerWindow.Show();
                 OnClosingRequest();
             }
+            if(authorizationHandler.Auth(_login, _securepassword) == Position.EmployeePosition.Client)
+            {
+                View.ClientWindow clientWindow = new View.ClientWindow();
+                clientWindow.Show();
+            }
             if (authorizationHandler.Auth(_login, _securepassword) == Position.EmployeePosition.NotFound)
             {
                 MessageBox.Show("Аккаунт не найден в базе данных.");

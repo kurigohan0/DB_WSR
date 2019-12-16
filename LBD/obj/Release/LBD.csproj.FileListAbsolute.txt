@@ -90,3 +90,5 @@ C:\Users\Евгений\Documents\Projects\LDB\DB_WSR\LBD\obj\Release\LBD.csproj
 C:\Users\Евгений\Documents\Projects\LDB\DB_WSR\LBD\obj\Release\LBD.csproj.CopyComplete
 C:\Users\Евгений\Documents\Projects\LDB\DB_WSR\LBD\obj\Release\LBD.exe
 C:\Users\Евгений\Documents\Projects\LDB\DB_WSR\LBD\obj\Release\LBD.pdb
+C:\Users\Евгений\Documents\Projects\LDB\DB_WSR\LBD\obj\Release\View\ClientWindow.g.cs
+C:\Users\Евгений\Documents\Projects\LDB\DB_WSR\LBD\obj\Release\View\ClientWindow.baml
