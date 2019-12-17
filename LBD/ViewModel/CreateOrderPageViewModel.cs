@@ -35,14 +35,16 @@ namespace LBD.ViewModel
             rs.Cassete_Rentals.Add(new Model.Cassete_Rentals
             {
                 Order_Id = rs.Cassete_Rentals.Count() + 1,
-                Copy_Id = rs.Cassete_Copies.Find(1, SelectedCassete.Id).Copy_Id,
+                Copy_Id = SelectedCassete.CopyId,
                 Give_Date = SelectedDate,
                 Get_Date = SelectedReturnDate,
                 Client_Id = 1,//fix
                 Departament_Id = rs.Staff.Find(AuthorizationHandler.CurrentUserID).Departament_Id.GetValueOrDefault()
             });
-            rs.Cassete_Copies.Find(1, SelectedCassete.Id).Status = "busy";
+            rs.Cassete_Copies.Find(SelectedCassete.CopyId, SelectedCassete.Id).Status = "busy";
             rs.SaveChanges();
+            MessageBox.Show("Заказ создан.");
+            GetFreeCassetes();
         }
 
         public async void Get()
@@ -216,25 +218,29 @@ namespace LBD.ViewModel
         {
             FindHandler find = new FindHandler();
             rs = new Model.RentalShopEntities();
-            Model.Cassete_Copies copy;
+            List<int> tmp = new List<int>();
             FreeCassetes.Clear();
             foreach (var item in find.FindTitle(FindHandler.FieldType.Title, FindArg))
             {
-                if (rs.Cassete_Copies.Find(1, item.Catalog_Id) != null && rs.Cassete_Copies.Find(1, item.Catalog_Id).Status != "busy")
+                foreach (var copyItem in rs.Cassete_Copies)
                 {
-                    p.Dispatcher.Invoke(() =>
+                    if(item != null && copyItem.Catalog_Id == item.Catalog_Id && copyItem.Status != "busy" && !tmp.Contains(copyItem.Catalog_Id))
                     {
-                        FreeCassetes.Add(new CasseteShortInfo
+                        tmp.Add(copyItem.Catalog_Id);
+                        p.Dispatcher.Invoke(() =>
                         {
-                            Copies = 1,//fix
-                            Cover = API.Image.ByteArrayToImage(item.Cover),
-                            Id = item.Catalog_Id,
-                            Name = item.Title
+                            FreeCassetes.Add(new CasseteShortInfo
+                            {
+                                Cover = API.Image.ByteArrayToImage(item.Cover),
+                                Id = item.Catalog_Id,
+                                Name = item.Title
+                            });
                         });
-                    });
-
+                    }
                 }
+
             }
+            tmp.Clear();
         }
         public string OrderId
         {
@@ -259,29 +265,30 @@ namespace LBD.ViewModel
         public void GetFreeCassetes()
         {
             rs = new Model.RentalShopEntities();
-
-            Model.Cassete_Copies copy;
-            foreach (var item in rs.Cassetes)
+            List<int> tmp = new List<int>();
+            Model.Cassetes cassete;
+            FreeCassetes.Clear();
+            foreach (var item in rs.Cassete_Copies)
             {
-                copy = rs.Cassete_Copies.Find(1, item.Catalog_Id);
-
-                if (copy != null && copy.Status != "busy")
+                cassete = rs.Cassetes.Find(item.Catalog_Id);
+                if (cassete != null && item.Status != "busy" && !tmp.Contains(item.Catalog_Id))
                 {
+                    tmp.Add(item.Catalog_Id);
                     p.Dispatcher.Invoke(() =>
                     {
                         FreeCassetes.Add(new CasseteShortInfo
                         {
-                            Name = item.Title,
-                            Copies = copy.Copy_Id, //fix
-                            Cover = API.Image.ByteArrayToImage(item.Cover),
-                            Id = item.Catalog_Id
+                            Name = cassete.Title,
+                            Copies = item.Copy_Id,
+                            Cover = API.Image.ByteArrayToImage(cassete.Cover),
+                            Id = item.Catalog_Id,
+                            CopyId = item.Copy_Id
                         });
                     });
 
                 }
             }
-            
-
+            tmp.Clear();
         }
 
         public void OnPropertyChanged([CallerMemberName]string prop = "")
