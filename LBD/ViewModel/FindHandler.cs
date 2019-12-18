@@ -61,7 +61,6 @@ namespace LBD.ViewModel
                         }
                     }
                     break;
-
             }
             return cassetes;
 

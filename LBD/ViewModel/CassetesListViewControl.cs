@@ -20,7 +20,6 @@ namespace LBD.ViewModel
     {
         CancellationTokenSource cancelTokenSource = new CancellationTokenSource();
         CancellationToken token;
-
         Page p;
         public CassetesListViewControl(Page page)
         {
@@ -30,14 +29,13 @@ namespace LBD.ViewModel
             _findargs.Add("Режиссер");
             _findargs.Add("Цена");
             _findargs.Add("Отдел");
-
             Get();
             FindCommand = new RelayCommand(o => FindCommandClick("FindButton"));
-
             SelectedCasseteCommand = new RelayCommand(o => SelectedCasseteClick("SelectButton"));
             UpdateTable = new RelayCommand(p => UpdateTableClick("UpdateButton"));
-
         }
+
+        #region Methods and Properties
 
         public async void Get()
         {
@@ -98,11 +96,32 @@ namespace LBD.ViewModel
                             });
                         }
                         break;
-
                 }
-                
-                
             }
+        }
+
+        public async void GetCassetes()
+        {
+            Model.RentalShopEntities rs = new Model.RentalShopEntities();
+
+            foreach (var item in rs.Cassetes)
+            {
+                p.Dispatcher.Invoke(() =>
+                {
+                    if (token.IsCancellationRequested)
+                        return;
+                    else
+                        Cassetes.Add(new CasseteShortInfo
+                        {
+                            Cover = API.Image.ByteArrayToImage(item.Cover),
+                            Id = item.Catalog_Id,
+                            Name = item.Title
+                        });
+                });
+
+            }
+            IsUpdateAllows = true;
+
         }
 
         public ICommand UpdateTable { get; set; }
@@ -124,6 +143,10 @@ namespace LBD.ViewModel
                 casseteAbout.Show();
             }
         }
+        #endregion
+
+        #region Properies
+
 
         private string _inputtext;
         public string InputText
@@ -171,6 +194,7 @@ namespace LBD.ViewModel
         public CasseteShortInfo SelectedCassete { get; set; }
 
         public ObservableCollection<CasseteShortInfo> _cassetes = new ObservableCollection<CasseteShortInfo>();
+
         public ObservableCollection<CasseteShortInfo> Cassetes
         {
             get
@@ -183,14 +207,7 @@ namespace LBD.ViewModel
                 OnPropertyChanged("Cassetes");
             }
         }
-
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
+        
         private bool _isUpdateAllows;
 
         public bool IsUpdateAllows
@@ -205,29 +222,13 @@ namespace LBD.ViewModel
                 OnPropertyChanged("IsUpdateAllows");
             }
         }
+        #endregion
 
-        public async void GetCassetes()
+        public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
-            Model.RentalShopEntities rs = new Model.RentalShopEntities();
-
-            foreach (var item in rs.Cassetes)
-            {
-                p.Dispatcher.Invoke(() =>
-                {
-                    if (token.IsCancellationRequested)
-                        return;
-                    else
-                    Cassetes.Add(new CasseteShortInfo
-                    {
-                        Cover = API.Image.ByteArrayToImage(item.Cover),
-                        Id = item.Catalog_Id,
-                        Name = item.Title
-                    });
-                });
-
-            }
-            IsUpdateAllows = true;
-
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

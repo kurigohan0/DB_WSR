@@ -33,7 +33,7 @@
         <Label Content="Итоговая цена: " HorizontalAlignment="Left" Margin="10,356,0,0" VerticalAlignment="Top" Width="115"/>
         <Label HorizontalAlignment="Left" Height="26" Margin="135,355,0,0" Content="{Binding TotalPrice}" VerticalAlignment="Top" Width="100"/>
         <Label Content="Клиент: " HorizontalAlignment="Left" Margin="10,226,0,0" VerticalAlignment="Top" Width="115"/>
-        <ComboBox IsEditable="True" ShouldPreserveUserEnteredPrefix="True" ItemsSource="{Binding Clients}" SelectedItem="{Binding SelectedClient}" HorizontalAlignment="Left" Margin="135,228,0,0" VerticalAlignment="Top" Width="190"/>
+        <ComboBox IsEditable="True" SelectedIndex="{Binding SelectedClientID}" ShouldPreserveUserEnteredPrefix="True" ItemsSource="{Binding Clients}" HorizontalAlignment="Left" Margin="135,228,0,0" VerticalAlignment="Top" Width="190"/>
         <Button Content="Создать заказ" Command="{Binding CreateOrder}" HorizontalAlignment="Left" Margin="390,360,-0.2,0" VerticalAlignment="Top" Width="243" Height="22"/>
         <TextBox  HorizontalAlignment="Left" Height="26" Margin="390,50,0,0" TextWrapping="Wrap" Text="{Binding FindArg}" VerticalAlignment="Top" Width="170"/>
         <Button Content="Найти" Command="{Binding FindCommand}" HorizontalAlignment="Left" Margin="565,50,-2.2,0" VerticalAlignment="Top" Width="70" Height="26"/>

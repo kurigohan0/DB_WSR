@@ -15,8 +15,8 @@
         <Label Content="Название:" HorizontalAlignment="Left" Margin="192,11,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBox IsEnabled="{Binding CanEdit}" HorizontalAlignment="Left" Height="23" Margin="192,101,0,0" VerticalAlignment="Top" Text="{Binding Path=Director}" Width="222"/>
         <Label Content="Режиссер:" HorizontalAlignment="Left" Margin="192,70,0,0" VerticalAlignment="Top" Width="120"/>
-        <ComboBox IsEnabled="{Binding CanEdit}" IsEditable="True" HorizontalAlignment="Left" Height="23" Margin="192,160,0,0" VerticalAlignment="Top" Width="222" ItemsSource="{Binding Path=Genre}"/>
-        <Label Content="Жанр:" HorizontalAlignment="Left" Margin="192,129,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox Visibility="Hidden" IsEnabled="{Binding CanEdit}" IsEditable="True" HorizontalAlignment="Left" Height="23" Margin="192,160,0,0" VerticalAlignment="Top" Width="222" ItemsSource="{Binding Path=Genre}"/>
+        <Label Visibility="Hidden" Content="Жанр:" HorizontalAlignment="Left" Margin="192,129,0,0" VerticalAlignment="Top" Width="120"/>
         <TextBox IsEnabled="{Binding CanEdit}" HorizontalAlignment="Left" Height="23" Margin="10,219,0,0" TextWrapping="Wrap" Text="{Binding Path=Price}" VerticalAlignment="Top" Width="85"/>
         <Label Content="Цена:" HorizontalAlignment="Left" Margin="10,188,0,0" VerticalAlignment="Top" Width="85"/>
         <TextBox IsEnabled="{Binding CanEdit}" HorizontalAlignment="Left" Height="23" Margin="102,219,0,0" TextWrapping="Wrap" Text="{Binding Path=Departament}" VerticalAlignment="Top" Width="85"/>

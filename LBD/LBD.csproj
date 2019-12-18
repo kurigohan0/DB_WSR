@@ -135,6 +135,7 @@
     <Compile Include="ViewModel\CasseteAboutViewModel.cs" />
     <Compile Include="ViewModel\CasseteShortInfo.cs" />
     <Compile Include="ViewModel\CassetesListViewControl.cs" />
+    <Compile Include="ViewModel\ClientShortInfo.cs" />
     <Compile Include="ViewModel\ClientWindowViewModel.cs" />
     <Compile Include="ViewModel\CreateOrderPageViewModel.cs" />
     <Compile Include="ViewModel\DefaultViewModel.cs" />

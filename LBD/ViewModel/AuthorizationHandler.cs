@@ -14,8 +14,6 @@ namespace LBD.ViewModel
         public static string Login { get; set; }
         public static Position.EmployeePosition CurrentPosition;
 
-
-
         public Position.EmployeePosition Auth(string login, string pass)
         {
             Model.RentalShopEntities rs = new Model.RentalShopEntities();

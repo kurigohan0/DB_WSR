@@ -22,10 +22,8 @@ namespace LBD.ViewModel
         {
             SaveCommand = new RelayCommand(o => SaveButtonClick("SaveButton"));
             CancelCommand = new RelayCommand(o => CancelCommandClick("CancelButton"));
-
-        ConnectToDB();
+            ConnectToDB();
             cat_id = id;
-
             if (database != null)
             {
                 try
@@ -48,6 +46,40 @@ namespace LBD.ViewModel
             }
 
         }
+
+        #region Methods and Commands
+        private void ConnectToDB()
+        {
+            database = new Model.RentalShopEntities();
+        }
+
+        public ICommand SaveCommand { get; set; }
+
+        private async void SaveButtonClick(object sender)
+        {
+            database.Cassetes.Find(cat_id).Cover = API.Image.BitmapToByteArray(_cover);
+            database.Cassetes.Find(cat_id).Title = _title;
+            database.Cassetes.Find(cat_id).Director = _director;
+            //database.Cassetes.Find(cat_id).Genere_Id = _genre;
+            database.Cassetes.Find(cat_id).Price = _price;
+            database.Cassetes.Find(cat_id).Departament_Id = _departament;
+
+            database.SaveChanges();
+            OnClosingRequest();
+        }
+
+        public ICommand CancelCommand { get; set; }
+
+        private async void CancelCommandClick(object sender)
+        {
+            OnClosingRequest();
+
+        }
+
+        #endregion
+
+        #region Properties
+
         public bool CanEdit
         {
             get
@@ -68,11 +100,6 @@ namespace LBD.ViewModel
             {
 
             }
-        }
-
-        private void ConnectToDB()
-        {
-            database = new Model.RentalShopEntities();
         }
 
         public string _title;
@@ -118,6 +145,7 @@ namespace LBD.ViewModel
         }
 
         public double? _price;
+
         public double? Price
         {
             get
@@ -132,6 +160,7 @@ namespace LBD.ViewModel
         }
 
         public int? _departament;
+
         public int? Departament
         {
             get
@@ -144,7 +173,9 @@ namespace LBD.ViewModel
                 OnPropertyChanged("Departament");
             }
         }
+
         public int _contentId;
+
         public int ContentId
         {
             get
@@ -159,6 +190,7 @@ namespace LBD.ViewModel
         }
 
         public BitmapImage _cover;
+
         public BitmapImage Cover
         {
             get
@@ -171,27 +203,7 @@ namespace LBD.ViewModel
                 OnPropertyChanged("Cover");
             }
         }
-
-        public ICommand SaveCommand { get; set; }
-        private async void SaveButtonClick(object sender)
-        {
-            database.Cassetes.Find(cat_id).Cover = API.Image.BitmapToByteArray(_cover);
-            database.Cassetes.Find(cat_id).Title = _title;
-            database.Cassetes.Find(cat_id).Director = _director;
-            //database.Cassetes.Find(cat_id).Genere_Id = _genre;
-            database.Cassetes.Find(cat_id).Price = _price;
-            database.Cassetes.Find(cat_id).Departament_Id = _departament;
-
-            database.SaveChanges();
-            OnClosingRequest();
-        }
-
-        public ICommand CancelCommand { get; set; }
-        private async void CancelCommandClick(object sender)
-        {
-            OnClosingRequest();
-
-        }
+        #endregion
 
         public event PropertyChangedEventHandler PropertyChanged;
 

@@ -24,20 +24,6 @@ namespace LBD.ViewModel
             _securepassword = "1";
         }
 
-
-        private string _login;
-        public string Login
-        {
-            get
-            {
-                return _login;
-            }
-            set
-            {
-                _login = value;
-                OnPropertyChanged("Login");
-            }
-        }
         public ICommand LoginCommand { get; set; }
         private async void LoginButtonClick(object sender)
         {
@@ -57,9 +43,22 @@ namespace LBD.ViewModel
             {
                 MessageBox.Show("Аккаунт не найден в базе данных.");
             }
-
         }
-        
+
+        private string _login;
+        public string Login
+        {
+            get
+            {
+                return _login;
+            }
+            set
+            {
+                _login = value;
+                OnPropertyChanged("Login");
+            }
+        }
+
         private string _securepassword;
         public string SecurePassword
         {

@@ -11,9 +11,8 @@ namespace LBD.ViewModel
     {
         public DefaultViewModel()
         {
-        }
 
-        
+        }
 
         public event EventHandler ClosingRequest;
         public event PropertyChangedEventHandler PropertyChanged;

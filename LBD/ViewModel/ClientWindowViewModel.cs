@@ -11,8 +11,8 @@ namespace LBD.ViewModel
     {
         public ClientWindowViewModel()
         {
-        }
 
+        }
         public string ClientName
         {
             get

@@ -12,7 +12,6 @@ namespace LBD.ViewModel
         public string Name { get; set; }
         public BitmapImage Cover { get; set; }
         public int Id { get;set; }
-
         public int CopyId { get; set; }
         public int? Copies { get; set; }
     }
