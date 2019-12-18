@@ -14,9 +14,10 @@
     </Window.DataContext>
 
     <Grid>
-        <Button Content="Все кассеты" Command="{Binding AllCassetesCommand}" HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top" Width="136" Height="24" Click="Button_Click"/>
+        <Button Content="Все кассеты" HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top" Width="136" Height="24" Click="Button_Click"/>
         <Frame NavigationUIVisibility="Hidden" Content="" HorizontalAlignment="Left" Height="410" Margin="151,0,0,0" VerticalAlignment="Top" Width="633" x:Name="Frame1"/>
-        <Button Content="Сформировать заказ" Command="{Binding CreateOrderCommand}" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Width="136" Height="24" Click="Button_Click_1"/>
+        <Button Content="Сформировать заказ" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Width="136" Height="24" Click="Button_Click_1"/>
+        <Button Content="Все заказы" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top" Width="136" Height="24" Click="Button_Click_2"/>
 
     </Grid>
 </Window>

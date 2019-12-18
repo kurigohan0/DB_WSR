@@ -132,6 +132,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Position.cs" />
+    <Compile Include="ViewModel\AllOrdersViewModel.cs" />
     <Compile Include="ViewModel\CasseteAboutViewModel.cs" />
     <Compile Include="ViewModel\CasseteShortInfo.cs" />
     <Compile Include="ViewModel\CassetesListViewControl.cs" />
@@ -142,6 +143,7 @@
     <Compile Include="ViewModel\FindHandler.cs" />
     <Compile Include="ViewModel\ManagerWindowViewModel.cs" />
     <Compile Include="ViewModel\NavigateViewModel.cs" />
+    <Compile Include="ViewModel\OrderInfo.cs" />
     <Compile Include="View\CasseteAbout.xaml.cs">
       <DependentUpon>CasseteAbout.xaml</DependentUpon>
     </Compile>
@@ -150,6 +152,9 @@
     </Compile>
     <Compile Include="View\ManagerWindow.xaml.cs">
       <DependentUpon>ManagerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\AllOrders.xaml.cs">
+      <DependentUpon>AllOrders.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Pages\CassetesList.xaml.cs">
       <DependentUpon>CassetesList.xaml</DependentUpon>
@@ -190,6 +195,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\ManagerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\AllOrders.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -40,5 +40,10 @@ namespace LBD.View
         {
             Frame1.Navigate(new View.Pages.CreateOrderPage(this));
         }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Frame1.Navigate(new View.Pages.AllOrders(this));
+        }
     }
 }
