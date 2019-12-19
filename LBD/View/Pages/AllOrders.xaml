@@ -13,12 +13,12 @@
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header="Номер заказа" DisplayMemberBinding="{Binding Path=OrderID}"></GridViewColumn>
-                        <GridViewColumn Header="Номер копии" DisplayMemberBinding="{Binding Path=CopyID}"></GridViewColumn>
+                        <GridViewColumn Header="№ заказа" DisplayMemberBinding="{Binding Path=OrderID}"></GridViewColumn>
+                        <GridViewColumn Header="№ копии" DisplayMemberBinding="{Binding Path=CopyID}"></GridViewColumn>
                         <GridViewColumn Header="Дата получения" DisplayMemberBinding="{Binding Path=Give_Date}"></GridViewColumn>
                         <GridViewColumn Header="Дата возврата" DisplayMemberBinding="{Binding Path=Get_Date}"></GridViewColumn>
                         <GridViewColumn Header="Клиент" DisplayMemberBinding="{Binding Path=Client}"></GridViewColumn>
-                        <GridViewColumn Header="Отделение" DisplayMemberBinding="{Binding Path=Departament_ID}"></GridViewColumn>
+                        <GridViewColumn Header="Отдел" DisplayMemberBinding="{Binding Path=Departament_ID}"></GridViewColumn>
                         <GridViewColumn Header="Статус" DisplayMemberBinding="{Binding Path=Status}"></GridViewColumn>
 
 

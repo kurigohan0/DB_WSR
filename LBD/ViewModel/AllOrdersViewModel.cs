@@ -62,20 +62,26 @@ namespace LBD.ViewModel
         private void FindByDateClick(object sender)
         {
             Orders.Clear();
+            Model.Cassete_Copies cassete_copy;
+            string status;
             rs = new Model.RentalShopEntities();
             foreach (var item in rs.Cassete_Rentals)
             {
-
                 p.Dispatcher.Invoke(() =>
                 {
-                    if(item.Give_Date == SelectedDate)
+                    cassete_copy = rs.Cassete_Copies.Where(s => s.Copy_Id == item.Copy_Id).FirstOrDefault<Model.Cassete_Copies>();
+                    if (cassete_copy.Status == "busy")
+                        status = "В аренде";
+                    else
+                        status = "Выполнено";
+                    if (item.Give_Date == SelectedDate)
                     Orders.Add(new OrderInfo
                     {
                         OrderID = item.Order_Id,
                         CopyID = item.Copy_Id,
                         Give_Date = item.Give_Date.Date,
                         Get_Date = item.Get_Date,
-                        
+                        Status = status,                        
                         Client = item.Clients.First_Name + " " + item.Clients.Second_Name + " (" + item.Clients.Client_Id + ")",
                         Departament_ID = item.Departament_Id
                     });

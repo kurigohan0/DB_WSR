@@ -19,6 +19,7 @@
         <Button Content="Сформировать заказ" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Width="136" Height="24" Click="Button_Click_1"/>
         <Button Content="Все заказы" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top" Width="136" Height="24" Click="Button_Click_2"/>
         <Button Content="Возврат кассеты" HorizontalAlignment="Left" Margin="10,168,0,0" VerticalAlignment="Top" Width="136" Height="24" Click="Button_Click_3"/>
+        <Button Content="Выход" HorizontalAlignment="Left" Margin="10,375,0,0" VerticalAlignment="Top" Width="136" Height="24" Click="Button_Click_4"/>
 
     </Grid>
 </Window>

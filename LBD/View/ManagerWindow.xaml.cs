@@ -33,23 +33,65 @@ namespace LBD.View
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Frame1.Navigate(new View.Pages.CassetesList(this));
+            if (!Frame1.CanGoBack)
+                Frame1.Navigate(new View.Pages.CassetesList(this));
+            else
+            {
+                System.GC.Collect();
+                Frame1.Content = null;
+                Frame1.RemoveBackEntry();
+                Frame1.Navigate(new View.Pages.CassetesList(this));
+            }
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Frame1.Navigate(new View.Pages.CreateOrderPage(this));
+            if (!Frame1.CanGoBack)
+                Frame1.Navigate(new View.Pages.CreateOrderPage(this));
+            else
+            {
+                System.GC.Collect();
+                Frame1.Content = null;
+                Frame1.RemoveBackEntry();
+                Frame1.Navigate(new View.Pages.CreateOrderPage(this));
+
+            }
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Frame1.Navigate(new View.Pages.AllOrders(this));
+            if (!Frame1.CanGoBack)
+                Frame1.Navigate(new View.Pages.AllOrders(this));
+            else
+            {
+                System.GC.Collect();
+                Frame1.Content = null;
+                Frame1.RemoveBackEntry();
+                Frame1.Navigate(new View.Pages.AllOrders(this));
+            }
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            Frame1.Navigate(new View.Pages.ReturnCassete(this));
+            if (!Frame1.CanGoBack)
+                Frame1.Navigate(new View.Pages.ReturnCassete(this));
+            else
+            {
+                System.GC.Collect();
+                Frame1.Content = null;
+                Frame1.RemoveBackEntry();
+                Frame1.Navigate(new View.Pages.ReturnCassete(this));
 
+            }
+
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            System.GC.Collect();
+            View.LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            this.Close();
         }
     }
 }
