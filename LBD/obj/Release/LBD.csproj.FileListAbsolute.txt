@@ -94,3 +94,5 @@ C:\Users\Евгений\Documents\Projects\LDB\DB_WSR\LBD\obj\Release\View\Clien
 C:\Users\Евгений\Documents\Projects\LDB\DB_WSR\LBD\obj\Release\View\ClientWindow.baml
 C:\Users\Евгений\Documents\Projects\LDB\DB_WSR\LBD\obj\Release\View\Pages\AllOrders.g.cs
 C:\Users\Евгений\Documents\Projects\LDB\DB_WSR\LBD\obj\Release\View\Pages\AllOrders.baml
+C:\Users\Евгений\Documents\Projects\LDB\DB_WSR\LBD\obj\Release\View\Pages\ReturnCassete.g.cs
+C:\Users\Евгений\Documents\Projects\LDB\DB_WSR\LBD\obj\Release\View\Pages\ReturnCassete.baml

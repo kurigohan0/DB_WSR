@@ -19,6 +19,8 @@
                         <GridViewColumn Header="Дата возврата" DisplayMemberBinding="{Binding Path=Get_Date}"></GridViewColumn>
                         <GridViewColumn Header="Клиент" DisplayMemberBinding="{Binding Path=Client}"></GridViewColumn>
                         <GridViewColumn Header="Отделение" DisplayMemberBinding="{Binding Path=Departament_ID}"></GridViewColumn>
+                        <GridViewColumn Header="Статус" DisplayMemberBinding="{Binding Path=Status}"></GridViewColumn>
+
 
 
 

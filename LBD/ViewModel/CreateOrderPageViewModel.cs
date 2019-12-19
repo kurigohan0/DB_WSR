@@ -47,7 +47,7 @@ namespace LBD.ViewModel
                     Copy_Id = SelectedCassete.CopyId,
                     Give_Date = SelectedDate,
                     Get_Date = SelectedReturnDate,
-                    Client_Id = _selectedClientID + 1,//fix
+                    Client_Id = _selectedClientID + 1,
                     Departament_Id = rs.Staff.Find(AuthorizationHandler.CurrentUserID).Departament_Id.GetValueOrDefault()
                 });
                 rs.Cassete_Copies.Find(SelectedCassete.CopyId, SelectedCassete.Id).Status = "busy";

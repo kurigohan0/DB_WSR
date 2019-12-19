@@ -45,5 +45,11 @@ namespace LBD.View
         {
             Frame1.Navigate(new View.Pages.AllOrders(this));
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Frame1.Navigate(new View.Pages.ReturnCassete(this));
+
+        }
     }
 }

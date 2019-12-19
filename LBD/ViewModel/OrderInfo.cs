@@ -14,5 +14,6 @@ namespace LBD.ViewModel
         public DateTime Get_Date { get; set; }
         public string Client { get; set; }
         public int Departament_ID { get; set; }
+        public string Status { get; set; }
     }
 }

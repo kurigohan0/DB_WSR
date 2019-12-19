@@ -31,11 +31,18 @@ namespace LBD.ViewModel
 
         private void GetOrders()
         {
+            Model.Cassete_Copies cassete_copy;
             rs = new Model.RentalShopEntities();
+            string status;
             foreach (var item in rs.Cassete_Rentals)
             {
                 p.Dispatcher.Invoke(() =>
                 {
+                    cassete_copy = rs.Cassete_Copies.Where(s => s.Copy_Id == item.Copy_Id).FirstOrDefault<Model.Cassete_Copies>();
+                    if (cassete_copy.Status == "busy")
+                        status = "В аренде";
+                    else
+                        status = "Выполнено";
                     Orders.Add(new OrderInfo
                     {
                         OrderID = item.Order_Id,
@@ -43,7 +50,8 @@ namespace LBD.ViewModel
                         Give_Date = item.Give_Date.Date,
                         Get_Date = item.Get_Date,
                         Client = item.Clients.First_Name + " " + item.Clients.Second_Name + " (" + item.Clients.Client_Id + ")",
-                        Departament_ID = item.Departament_Id
+                        Departament_ID = item.Departament_Id,
+                        Status = status
                     });
                 });
             }
@@ -57,6 +65,7 @@ namespace LBD.ViewModel
             rs = new Model.RentalShopEntities();
             foreach (var item in rs.Cassete_Rentals)
             {
+
                 p.Dispatcher.Invoke(() =>
                 {
                     if(item.Give_Date == SelectedDate)
@@ -66,6 +75,7 @@ namespace LBD.ViewModel
                         CopyID = item.Copy_Id,
                         Give_Date = item.Give_Date.Date,
                         Get_Date = item.Get_Date,
+                        
                         Client = item.Clients.First_Name + " " + item.Clients.Second_Name + " (" + item.Clients.Client_Id + ")",
                         Departament_ID = item.Departament_Id
                     });

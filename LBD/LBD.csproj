@@ -144,6 +144,8 @@
     <Compile Include="ViewModel\ManagerWindowViewModel.cs" />
     <Compile Include="ViewModel\NavigateViewModel.cs" />
     <Compile Include="ViewModel\OrderInfo.cs" />
+    <Compile Include="ViewModel\ReturnCasseteViewModel.cs" />
+    <Compile Include="ViewModel\ReturnInfo.cs" />
     <Compile Include="View\CasseteAbout.xaml.cs">
       <DependentUpon>CasseteAbout.xaml</DependentUpon>
     </Compile>
@@ -161,6 +163,9 @@
     </Compile>
     <Compile Include="View\Pages\CreateOrderPage.xaml.cs">
       <DependentUpon>CreateOrderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Pages\ReturnCassete.xaml.cs">
+      <DependentUpon>ReturnCassete.xaml</DependentUpon>
     </Compile>
     <Page Include="View\CasseteAbout.xaml">
       <SubType>Designer</SubType>
@@ -207,6 +212,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Pages\CreateOrderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Pages\ReturnCassete.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
